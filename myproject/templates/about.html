@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About COEP Hostel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        section {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        p {
+            line-height: 1.6;
+            color: #555;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="navigation-buttons">
+        <button onclick="goToPreviousPage()">&#129044;</button>
+        <button onclick="goToNextPage()">&#10132;</button>
+    </div>
+    <div id="current-path"></div>
+    <header>
+        <h1>COEP Hostel</h1>
+    </header>
+    <script>
+        function goToPreviousPage() {
+            window.history.back();
+        }
+        function goToNextPage() {
+            window.history.forward();
+        }
+        function getPageNumber(path) {
+            const match = path.match(/\/page(\d+)/);
+            return match ? parseInt(match[1]) : 1;
+        }
+    </script>
+    <section>
+        <h2>About Us</h2>
+        <p>Welcome to COEP Hostel, providing a comfortable and vibrant living environment for students. Our hostel is an
+            integral part of the College of Engineering, Pune (COEP) campus, offering a home away from home for students
+            pursuing academic excellence.</p>
+
+        <h2>Our Mission</h2>
+        <p>Our mission is to create a safe and supportive community that fosters personal and academic growth. We strive
+            to provide a conducive environment for learning, collaboration, and the overall well-being of our residents.
+        </p>
+
+        <h2>Facilities</h2>
+        <p>COEP Hostel offers modern amenities and facilities, including spacious rooms, recreational areas, study
+            spaces, and more. Our goal is to enhance the overall living experience and contribute to the holistic
+            development of our residents.</p>
+    </section>
+
+    <footer>
+        &copy; 2024 COEP Hostel. All rights reserved.
+    </footer>
+
+</body>
+
+</html>

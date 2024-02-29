@@ -1,0 +1,103 @@
+
+  *{
+    margin: 0px;
+  } 
+  body{
+    background-image: url('https://coepianforcoepians.files.wordpress.com/2017/05/coep_ghb.jpg?w=1450');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .navBar{
+      color:rgb(20, 17, 17);
+      background-color: #eee;
+      border-radius: 9px;
+  }
+  .navBar ul{
+      overflow: auto;
+      margin: 0px;
+      /* padding: 15px 25px; */
+  }
+  .navBar li{
+      float:left;
+      list-style:none;
+      padding:15px;
+      /* margin:5px auto; */
+      text-align: center;
+  }
+  
+  .navBar li a{
+      text-decoration:none;
+      color:black;
+   }
+  .navBar li a:hover{
+    color: white;
+  } 
+  .navBar li:hover{
+    background-color: rgb(78, 78, 245);
+    color: white;
+  }
+  
+  ul.topnav li.dropDownMenu{
+    display: none;
+  }
+  ul.topnav li.topnav-right{
+    float: right;
+  }
+  .search-box {
+    position: relative;
+    display: inline-block;
+    margin-left: 100px;
+    padding-top: 13px;
+  }
+  
+  .background{
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  
+  
+    
+  img{
+    width: 50px;
+    margin-top: -10px;
+    margin-left: -8px;
+    padding-top: 10px;
+    float:left;
+  }
+  @media screen and (max-width:480px){
+    ul.topnav li:not(:nth-child(1)){
+        display: none;
+    }
+    ul.topnav li.dropDownMenu{
+        display:block;
+        float: right;
+    }
+
+    ul.topnav.responsive li.dropDownMenu{
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    ul.topnav.responsive{
+        position: relative;
+    }
+    ul.topnav.responsive li{
+        display: inline;
+        float: none;
+        padding: 0px;
+        margin: 0px;
+    }
+    ul.topnav.responsive li a{
+        width: 20%;
+        display: block;
+        text-align: left;
+        padding: 9px;
+    }
+    ul.topnav.responsive li a:hover{
+      background-color: #f4efef;
+    }
+}
+  

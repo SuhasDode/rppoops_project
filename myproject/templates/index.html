@@ -1,0 +1,53 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coep-Hostel</title>
+    {%load static%}
+    <link href="{% static 'style.css' %}" rel="stylesheet">
+</head>
+<body >
+       <nav class = 'navBar'>
+        <ul class="topnav" id="dropDownclick">
+            <li><a href = "/">Home</a></li>
+            <li><a href = "about">About</a></li>
+            <li><a href = "services">Services</a></li>
+            <li><a href = "contact">Contact</a></li>
+            {%if user.is_authenticated%}
+            <li class="topnav-right"><a href="logout">Logout</a></li>
+            {%else%}
+            <li class="topnav-right"><a href="login">Login</a></li>
+            {%endif%}
+           
+            <li class="topnav-right"><a href="register">Sign In</a></li>
+            <li class = "dropDownMenu"><a href="javascript:void(0);" onclick="dropDownMenu()">&#9776;</a></li>       
+        </ul>
+        <script>
+            function dropDownMenu(){
+                var x = document.getElementById("dropDownclick");
+                if(x.className==="topnav"){
+                    x.className += " responsive";
+                    /*To change topnav to topnav.responsive*/ 
+                }else{
+                    x.className="topnav";
+                }
+            }
+        </script>
+    </nav>
+    <div class="background" style = "text-align: center;
+    font-size: 50px;    ">
+        {%load static%}
+        {%if user.is_authenticated%}
+        <p class = "greetings" >Welcome {{user.username}}</p>
+        {%else%}
+        <p class = "greetings">Welcome to COEP HOSTEL!</p>
+        {%endif%}
+
+    </div>
+    
+    
+    
+</body>
+</html>

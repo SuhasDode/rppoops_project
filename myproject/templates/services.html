@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+{%load static%}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hostel Services</title>
+  {%load static%}
+  <link href="{%static 'style2.css'%}" rel="stylesheet" >
+  
+</head>
+
+<body>
+  <div id="navigation-buttons">
+    <button onclick="goToPreviousPage()">&#129044;</button>
+    <button onclick="goToNextPage()">&#10132;</button>
+  </div>
+  <div id="current-path"></div>
+  <div class="home"><a href = "/">Home</a></div>
+
+  <script>
+    function goToPreviousPage() {
+      window.history.back();
+    }
+    function goToNextPage() {
+      window.history.forward();
+    }
+    function getPageNumber(path) {
+        const match = path.match(/\/page(\d+)/);
+        return match ? parseInt(match[1]) : 1;
+    }
+  </script>
+  <header>
+    <h1>Hostel Services</h1>
+  </header>
+
+  <section class="services">
+    <article class="service">
+      <h2><a href="acc.html">Accomodation</a></h2>
+      <p>Experience a comfortable stay in our well-equipped rooms. Our hostel offers a variety of accommodation options
+        to suit your needs:</p>
+
+
+
+      <p>Hostel come with:</p>
+
+      <ul>
+        <li>Cozy beds with fresh linens</li>
+        <li>En-suite bathrooms with hot showers</li>
+        <li>Free toiletries</li>
+        <li>Individual climate control</li>
+        <li>Complimentary cleaned water</li>
+        <!-- Add more features as needed -->
+      </ul>
+    </article>
+
+    <article class="service">
+      <h2>Meals</h2>
+      <p> Healthy and delicious meals served in our dining area.</p>
+    </article>
+
+    <article class="service">
+      <h2>COEP Wi-Fi</h2>
+      <p>Free high-speed Wi-Fi available throughout the hostel.</p>
+    </article>
+
+    <!-- Add more services as needed -->
+
+  </section>
+
+  <footer>
+    <p>&copy; 2024 COEP Tech hostel. All rights reserved.</p>
+  </footer>
+
+</body>
+
+</html>
