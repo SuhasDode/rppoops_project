@@ -1,17 +1,53 @@
-<h1>Sign Up</h1>
-
-{% for message in messages%}
-<b>{{message}}</b>
-{%endfor%}
-
-<form method = "POST" action = "register">
-    {% csrf_token %}
-    <p>Username :</p>
-    <input type = "text" name = "username"/>
-    <p>password :</p>
-    <input type = "password" name = "password"/>
-    <p>Repeat password:</p>
-    <input type = "password" name = "password2"/>
-    <br>
-    <input type = "submit"/>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+{%load static%}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    {%load static%}
+    <link rel="stylesheet" type="text/css" href="{%static 'style3.css'%}">
+</head>
+<body>
+    <div class="navigation-buttons">
+        <button class="pre-post" onclick="goToPreviousPage()"> &#8592;</button>
+        <button class="pre-post" onclick="goToNextPage()">&#10132;</button>
+    </div>
+    <div class="container">
+        <h1>Sign Up</h1>
+        {% for message in messages %}
+            <div class="message">{{ message }}</div>
+        {% endfor %}
+        <form method="POST" action="register">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="password2">Repeat Password:</label>
+                <input type="password" id="password2" name="password2" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Sign Up</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        function goToPreviousPage() {
+            window.history.back();
+        }
+        function goToNextPage() {
+            window.history.forward();
+        }
+        function getPageNumber(path) {
+            const match = path.match(/\/page(\d+)/);
+            return match ? parseInt(match[1]) : 1;
+        }
+    </script>
+</body>
+</html>
