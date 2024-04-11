@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Laundry</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://img.freepik.com/premium-photo/interior-laundry-room-with-washing-machine-bright-yellow-wall-background_566707-2239.jpg') no-repeat center center fixed;
+            background-size: cover;
+            background-position: center;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            color: #fff; /* White text color */
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background color for form */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333; /* Dark text color */
+        }
+        input[type="text"],
+        input[type="tel"],
+        input[type="number"],
+        select {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input[type="radio"] {
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+        button {
+            width: calc(100% - 22px);
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .alert{
+            display: block;
+            background-color: rgb(230, 230, 49);
+            color: #333;
+            text-align: center;
+            margin:10px;
+        }
+        input.Myradio{
+            display: inline;
+        }
+        label.Myradio{
+            display: inline;
+        }
+        label.Time-slot{
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert" role="alert">
+        <strong>{{ message }}</strong>
+    </div>
+    {% endfor %}
+    {% endif %}
+    <h1>Book Laundry</h1>
+    
+    <form method="post">
+        {% csrf_token %}
+        <label for="id_full_name">Full Name:</label>
+        <input type="text" id="id_full_name" name="full_name" required><br>
+        
+        <label for="id_room_number">Room Number:</label>
+        <input type="text" id="id_room_number" name="room_number" required><br>
+        
+        <label for="id_phone_number">Phone Number:</label>
+        <input type="tel" id="id_phone_number" name="phone_number" pattern="[0-9]{10,14}" required><br>
+        
+        <label for="id_kgs_count">Kgs Count:</label>
+        <input type="number" id="id_kgs_count" name="kgs_count" min="1" required><br>
+        
+        <label>Service Type:</label><br>
+        <input type="radio" class="Myradio" id_dry_cleaning" name="service_type" value="Dry Cleaning">
+        <label class="Myradio" for="id_dry_cleaning">Dry Cleaning</label>
+        
+        <input type="radio" class="Myradio" id_washing" name="service_type" value="Washing">
+        <label class="Myradio" for="id_washing">Washing</label>
+        
+        <input type="radio" class="Myradio" id_bleaching" name="service_type" value="Bleaching">
+        <label class="Myradio" for="id_bleaching">Bleaching</label><br>
+        
+        <label class="Time-slot" for="time_slot">Time Slot:</label>
+        <select id = "time_slot" name="time_slot" required>
+            <option value="5:00">5:00</option>
+            <option value="5:30">5:30</option>
+            <option value="6:00">6:00</option>
+            <option value="6:30">6:30</option>
+            <option value="7:00">7:00</option>
+        </select><br>
+        
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

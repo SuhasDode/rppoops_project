@@ -5,44 +5,128 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hostel Services</title>
-  {%load static%}
-  <link href="{%static 'style2.css'%}" rel="stylesheet" >
-  
+  <link href="{% static 'style2.css' %}" rel="stylesheet">
+  <style>
+    /* Additional CSS for enhanced styling */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+      position: relative; /* Add this line */
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    #navigation-buttons {
+      position: absolute;
+      top: 50%;
+      left: 20px;
+      transform: translateY(-50%);
+    }
+
+    #navigation-buttons button {
+      background-color: transparent;
+      border: none;
+      color: #fff;
+      font-size: 20px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    .home {
+      position: absolute;
+      float: left;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+    }
+
+    .home a {
+      float: left;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .services {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      padding: 20px;
+    }
+
+    .service {
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      padding: 20px;
+      margin-bottom: 20px;
+      width: calc(33.33% - 40px);
+      max-width: 300px;
+      text-align: center;
+    }
+
+    .service h2 {
+      color: #333;
+    }
+    .service a{
+      text-decoration: none;
+    }
+
+    footer {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+    h2 a{
+      text-decoration: none;
+    }
+  </style>
 </head>
 
 <body>
-  <div id="navigation-buttons">
-    <button onclick="goToPreviousPage()">&#129044;</button>
-    <button onclick="goToNextPage()">&#10132;</button>
-  </div>
-  <div id="current-path"></div>
-  <div class="home"><a href = "/">Home</a></div>
+  <header>
+    <div id="navigation-buttons">
+      <button onclick="goToPreviousPage()">&#129044;</button>
+      <button onclick="goToNextPage()">&#10132;</button>
+    </div>
+    <div class="home"><a href="/">Home</a></div>
+    <h1>Hostel Services</h1>
+  </header>
 
   <script>
     function goToPreviousPage() {
       window.history.back();
     }
+
     function goToNextPage() {
       window.history.forward();
     }
+
     function getPageNumber(path) {
-        const match = path.match(/\/page(\d+)/);
-        return match ? parseInt(match[1]) : 1;
+      const match = path.match(/\/page(\d+)/);
+      return match ? parseInt(match[1]) : 1;
     }
   </script>
-  <header>
-    <h1>Hostel Services</h1>
-  </header>
 
   <section class="services">
     <article class="service">
-      <h2><a href="acc.html">Accomodation</a></h2>
+      <h2><a href="acc.html">Accommodation</a></h2>
       <p>Experience a comfortable stay in our well-equipped rooms. Our hostel offers a variety of accommodation options
         to suit your needs:</p>
-
-
-
-      <p>Hostel come with:</p>
 
       <ul>
         <li>Cozy beds with fresh linens</li>
@@ -50,22 +134,26 @@
         <li>Free toiletries</li>
         <li>Individual climate control</li>
         <li>Complimentary cleaned water</li>
-        <!-- Add more features as needed -->
       </ul>
     </article>
 
     <article class="service">
-      <h2>Meals</h2>
-      <p> Healthy and delicious meals served in our dining area.</p>
+      <a href="meal">
+        <h2>Meals</h2>
+        <p>Healthy and delicious meals served in our dining area.</p>
+      </a>
     </article>
 
     <article class="service">
       <h2>COEP Wi-Fi</h2>
       <p>Free high-speed Wi-Fi available throughout the hostel.</p>
     </article>
-
-    <!-- Add more services as needed -->
-
+    <article class="service">
+      <a href= 'check'>
+        <h2>Attendence</h2>
+        <p>Check-in , check-out</p>
+      </a>
+    </article>
   </section>
 
   <footer>

@@ -1,0 +1,43 @@
+h2 span.badge1{
+    margin-top: 20px;
+}
+h2  {
+    text-align: center;
+}
+
+div.container.container_1{
+   
+    border: 2px solid rgb(128, 125, 125);
+    /* text-align: center; */
+    margin: auto;
+    padding: 30px;
+}
+
+.form1{
+    margin: 20px auto;
+}
+
+div.form-group.col-md-6.mess_token{
+    display: none;
+}
+
+button.btn.btn-primary.button1{
+    margin: auto;
+    display: block;
+    padding: 10px;
+}
+div.home{
+    margin: 5px;
+    margin-left: 8px;
+    
+}
+.home a{
+    color: black;
+    background-color: rgb(230, 250, 250);
+    padding: 10px;
+    border-radius: 5px;
+}
+.home a:hover{
+    color: rgb(252, 252, 252);
+    background-color: rgb(236, 160, 78);
+}

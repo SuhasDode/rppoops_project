@@ -1,43 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 {%load static%}
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
     {%load static%}
     <link rel="stylesheet" type="text/css" href="{%static 'style3.css'%}">
+    <link rel="stylesheet" href="{%static 'bootsrap/bootstrap-4.0.0-dist/css/bootstrap-grid.min.css'%}">
+    <link rel="stylesheet" href="{%static 'bootsrap/bootstrap-4.0.0-dist/css/bootstrap.min.css'%}">
+
 </head>
+
 <body>
-    <div class="navigation-buttons">
-        <button class="pre-post" onclick="goToPreviousPage()"> &#8592;</button>
-        <button class="pre-post" onclick="goToNextPage()">&#10132;</button>
+    <div class="home1">
+        <a href="/" id="Homenav">Home</a>
     </div>
-    <div class="container">
-        <h1>Sign Up</h1>
-        {% for message in messages %}
-            <div class="message">{{ message }}</div>
-        {% endfor %}
-        <form method="POST" action="register">
-            {% csrf_token %}
-            <div class="form-group">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
+
+    <div class="container sign-in_container">
+        <div class="badge2">
+            <h2><span class="badge badge-pill badge-warning badge1">Register Here</span></h2>
+        </div>
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-sm-12 col-md-8">
+                <div class="card sign-in-card">
+                    <div class="card-block">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQoPSHYfoASMsbeyzBDI-qdwqVUMTW9K8T8eYuYxMQrXxtV3JRjquOeizm90gSHYHQiPk&usqp=CAU"
+                            class="img-fluid sign-in-image">
+                        {% for message in messages %}
+                        <p class='messagealert'>{{ message }}</p>
+                        {% endfor %}
+                        <form  class="sign-in_form" method="POST" action="register">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="username">Username:</label>
+                                <input type="text" id="username" name="username" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">e-mail:</label>
+                                <input type="text" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password:</label>
+                                <input type="password" id="password" name="password" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password2">Repeat Password:</label>
+                                <input type="password" id="password2" name="password2" required>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn sign-in_button btn-lg" type="submit">Sign Up</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <div class="form-group">
-                <label for="password2">Repeat Password:</label>
-                <input type="password" id="password2" name="password2" required>
-            </div>
-            <div class="form-group">
-                <button type="submit">Sign Up</button>
-            </div>
-        </form>
+            <div class="col"></div>
+        </div>
     </div>
-    <script>
+    <!-- <script>
         function goToPreviousPage() {
             window.history.back();
         }
@@ -47,7 +70,8 @@
         function getPageNumber(path) {
             const match = path.match(/\/page(\d+)/);
             return match ? parseInt(match[1]) : 1;
-        }
+        } -->
     </script>
 </body>
+
 </html>

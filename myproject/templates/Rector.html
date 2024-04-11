@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {%load static%}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="{%static 'style6.css'%}" rel="stylesheet">
+    <link href="{%static 'bootsrap/bootstrap-4.0.0-dist/css/bootstrap-grid.min.css'%}" rel="stylesheet">
+    <link href="{%static 'bootsrap/bootstrap-4.0.0-dist/css/bootstrap.min.css'%}" rel="stylesheet">
+
+</head>
+<body>
+   
+    <div class="headBlock">
+        <h1 class="badge-pill head" style="display: block;">
+            Rector Admin
+            {%if not user.is_authenticated or user.username != 'Rector@2024'%}
+            <a href="/adminLogin" class="anchor">Login</a>
+            {%else%}
+            <a href="/logout" class="anchor">Logout</a>
+            {%endif%}
+            <a href="/Rector" class="anchor">Home</a>
+            <a href="/create_notice" class="anchor">Create Notices</a>
+            <a href="/AttendenceReport" class="anchor">Attendence Report</a>
+        </h1>
+    </div>
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-danger" role="alert">
+        <strong>{{ message }}</strong>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {%if requests%}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 laterequests">
+                <h2><span class="badge badge-pill badge-warning badge1" >Requests</span></h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">{{date}}</th>
+                            <th scope="col">Mis Number</th>
+                            <th scope="col">Outgoing Time</th>
+                            <th scope="col">Incoming Time</th>
+                            <th scope="col">Reason</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for request in requests%}
+                    <tr>
+                        <th scope="row">{{forloop.counter}}</th>
+                        <td>{{request.misno}}</td>
+                        <td>{{request.outgoingTime}}</td>
+                        <td>{{request.IncomingTime}}</td>
+                        <td>{{request.reason}}</td>
+                        {%if request.is_approved == True%}
+                        <td>Approved</td>
+                        {%else%}
+                        <td>Pending</td>
+                        {%endif%}
+                        <td>
+                            <form class="laterequestForm" action="approveLateRequest" method = "post">
+                                {%csrf_token%}
+                                <input type = 'text' value="{{request.misno}}" id = 'hiddenInput1' name ="hiddenInput1" hidden>
+                                <button type="submit" class="btn btn-primary ">Approve</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {%endfor%}
+                    <tr>
+                        <th scope="row">Total requests: {{len_requests}}</th>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    {%endif%}
+    <div class="container">
+        <h2 style="text-align: center;"><span class="badge badge-pill badge-warning badge1" >Check Details Here</span></h2>
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-md-4 colum1">
+                <form class="myform" action="getdetails" method="post">
+                    {% csrf_token %} 
+                    <div class="form-group col-md-12 form2">
+                      <label for="misno">Name</label>
+                      <input type="misno" class="form-control form1" id="misno" name = "misno"placeholder="Enter misno" required>
+                    </div>
+                    <div class="form-group col-md-12 form2">
+                        <label for="Yearofstudy">Year Of study</label>
+                        <select id="Yearofstudy" name="Yearofstudy" class="form-control form1" required>
+                            <option selected>1st Year</option>
+                            <option>2nd Year</option>
+                            <option>3rd Year</option>
+                            <option>B.tech</option>
+                        </select>
+                    </div>
+                    <div class="mybtn">
+                        <button type="submit" class="btn btn-primary ">Submit</button>
+                    </div>
+                  </form>
+            </div>
+            {%if user.username != 'Rector@2024' or not user.is_authenticated%}
+            <div class="alert alert-danger alert1" role="alert">
+                <strong>Login With Admin account</strong>
+            </div>
+            {%elif user.username == 'Rector@2024' and studentInfo %}
+            <div class="col-md-6 info1">
+                <div class="info">
+                    <label for="name">Name</label>
+                    <h4>{{studentInfo.name}}</h4>
+                </div>
+                <div class="info">
+                    <label for="name">Room number </label>
+                    <h4>{{studentInfo.room }}</h4>
+                </div> 
+                <div class="info">
+                    <label for="name">Mis Number</label>
+                    <h4>{{studentInfo.misno }}</h4>
+                </div>
+                <div class="info">
+                    <label for="name">College Mail Id</label>
+                    <h4>{{studentInfo.collegemailid}}</h4>
+                </div>
+                <div class="info">
+                    <label for="name">Address</label>
+                    <h4>{{studentInfo.address }}</h4>
+                </div>
+                <div class="info">
+                    <label for="name">Contact no</label>
+                    <h4>{{studentInfo.contactno}}</h4>
+                </div>
+                <div class="info">
+                    <label for="name">Year of study</label>
+                    <h4>{{studentInfo.Yearofstudy}}</h4>
+                </div>
+            </div>
+            
+            {%endif%}
+            <div class="col"></div>
+            
+        </div>
+    </div>
+
+    <div class="container">
+        <h2 style="text-align: center;"><span class="badge badge-pill badge-warning badge1" >Mark attendence:</span></h2>
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-md-6">
+                <form class= "myform2"id="checkin-form" method="POST" action="mark__night_attendence">
+                    {% csrf_token %}
+                    <label for="student-name-checkin">Mis Number</label>
+                    <input type="text" id="Misno" name="Misno" placeholder="Enter Misno" required><br>
+                    <div class="mybtn">
+                        <button type="submit" class="btn btn-primary ">Submit</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+</body>
+</html>

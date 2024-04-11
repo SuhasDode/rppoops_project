@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Booking Success</title>
+    <style>
+        body {
+            background-image: url('https://media.istockphoto.com/id/1227497304/photo/washing-machine-with-laundry-on-blue-wall-background.jpg?s=170667a&w=0&k=20&c=8XW522kZ6GnXpelQvs-2Hz3JJa2oZcGSPrgXA8JnCOM='); /* Add your background image URL */
+            background-size: cover; /* Make the background image cover the entire page */
+            {% comment %} background-position: center; {% endcomment %}
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            padding: 20px;
+            margin: 50px auto;
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Shadow effect */
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        strong {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Booking Details</h2>
+        <ul>
+            <li><strong>Booking Time:</strong> {{ laundry_booking.booking_date }} {{ laundry_booking.booking_time }}</li>
+            <li><strong>Service:</strong> {{ laundry_booking.service_type }}</li>
+            <li><strong>Kilograms:</strong> {{ laundry_booking.kgs_count }}</li>
+            <li><strong>Amount:</strong> Rs. {{ laundry_booking.total_amount }}</li>
+        </ul>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            alert("Your booking has been successfully submitted!");
+        });
+    </script>
+</body>
+</html>

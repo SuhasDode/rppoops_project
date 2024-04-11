@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Completed Laundry</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #333; /* Dark background color */
+            color: #fff; /* Light text color */
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        p {
+            text-align: center;
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #222; /* Darker background color for table header */
+            color: #fff; /* White text color for table header */
+        }
+        tr:nth-child(even) {
+            background-color: #444; /* Darker background color for even rows */
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #007bff; /* Blue color for link */
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>Completed Laundry</h1>
+    {% if not user.is_superuser %}
+    <p>You are not authorized to view this page.</p>
+    {% else %}
+    <table>
+        <tr>
+            <th>User</th>
+            <th>Full Name</th>
+            <th>Room Number</th>
+            <th>Phone Number</th>
+            <th>Kilograms</th>
+            <th>Service Type</th>
+            <th>Time Slot</th>
+            <th>Total Amount</th>
+        </tr>
+        {% for booking in completed_bookings %}
+        <tr>
+            <td>{{ booking.user }}</td>
+            <td>{{ booking.full_name }}</td>
+            <td>{{ booking.room_number }}</td>
+            <td>{{ booking.phone_number }}</td>
+            <td>{{ booking.kgs_count }}</td>
+            <td>{{ booking.service_type }}</td>
+            <td>{{ booking.time_slot }}</td>
+            <td>{{ booking.total_amount }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{% url 'admin_view' %}">Back to Admin View</a>
+    {% endif %}
+</body>
+</html>

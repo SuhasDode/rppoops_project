@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {%load static%}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostel Check-in/Check-out</title>
+    <link href="{% static 'style5.css'%}" rel="stylesheet">
+    <link href="{%static 'bootsrap/bootstrap-4.0.0-dist/css/bootstrap-grid.min.css'%}" rel="stylesheet">
+    <link href="{%static 'bootsrap/bootstrap-4.0.0-dist/css/bootstrap.min.css'%}" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="head">
+        <h1>
+            <a href="/" class="anchor">Home</a>
+            Hostel Check-in/Check-out
+        </h1>
+    </div>
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-danger" role="alert">
+        <strong>{{ message }}</strong>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    <h2><span class="badge badge-pill badge-info badge1">Coming Late Tonight ?</span></h2>
+    <div class="cotainer checkbox">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-md-6 colum2">
+                <h2><span class="badge badge-pill badge-warning badge1">Check-out Request:</span></h2>
+                <form id="checkin-form" method="POST" action="late_request">
+                    {% csrf_token %}
+                    <label for="student-name-checkin">Mis Number</label>
+                    <input type="text" id="Misno" name="Misno" placeholder="Enter mis Number" required><br>
+                    <div class="time1">
+                        <label for="checkin">OutGoing Time:</label>
+                        <input type="time" id="OutGoingTime" name="OutGoingTime" required><br>
+                    </div>
+                    <div class="time1">
+                        <label for="checkOut">Incoming Time:</label>
+                        <input type="time" id="IncomingTime" name="IncomingTime" required><br>
+                    </div>
+                    <div class="reason">
+                        <label for="Reason">Reason:</label>
+                        <input type="text" id="Reason" name="Reason" placeholder="Enter Reason here" required><br>
+                    </div>
+                    <button type="submit" class="submitbutton" id="checkin-submit-btn">Submit</button>
+                </form>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+
+
+
+    <!-- 
+    <script>
+        // Function to disable the submit button and show loading message
+        function handleFormSubmit(formId, btnId) {
+            var form = document.getElementById(formId);
+            var submitBtn = document.getElementById(btnId);
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = 'Processing...';
+            form.submit();
+        }
+
+        // Event listener for check-in form submission
+        document.getElementById('checkin-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            handleFormSubmit('checkin-form', 'checkin-submit-btn');
+        });
+
+        // Event listener for check-out form submission
+        document.getElementById('checkout-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            handleFormSubmit('checkout-form', 'checkout-submit-btn');
+        });
+    </script> -->
+</body>
+
+</html>

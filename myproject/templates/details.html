@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {%load static%}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details</title>
+    <link href="{%static 'bootsrap/bootstrap-4.0.0-dist/css/bootstrap-grid.min.css'%}" rel="stylesheet">
+    <link href="{%static 'bootsrap/bootstrap-4.0.0-dist/css/bootstrap.min.css'%}" rel="stylesheet">
+    <link href="{% static 'style9.css'%}" rel="stylesheet">
+</head>
+
+<body>
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-danger" role="alert">
+      <strong>{{ message }}</strong>
+    </div>
+    {% endfor %}
+    {% endif %}
+    <div class="home">
+        <a href="/">Home</a>
+    </div>
+    <div class="container container_1">
+        
+        <h2><span class="badge badge-pill badge-warning badge1">Fill Your Details</span></h2>
+        <div class="row">
+            <form class="form1" action="details_reg" method="POST">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="fullname">Full Name</label>
+                        <input type="text" class="form-control" id="fullname" name = "fullname"placeholder="name" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="Misno">MIS number</label>
+                        <input type="Misno" class="form-control" id="Misno" name = "Misno"placeholder="Enter Mis No"
+                            required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="mail">College Mail Id</label>
+                    <input type="mail" class="form-control" id="mail" name = "mail"placeholder="" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="roomno">Room Number</label>
+                        <input type="text" class="form-control" id="roomno" name = "roomno"placeholder="" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="Adress">Address:</label>
+                        <input type="text" class="form-control" id="Adress" name = "Adress"placeholder="Enter Address"
+                            required>
+                    </div>
+                </div>
+                <div class="form-group">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="contactno">Contact Number</label>
+                        <input type="contactno" class="form-control" id="contactno"name = "contactno">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="Yearofstudy">Year Of study</label>
+                        <select id="Yearofstudy" name="Yearofstudy" class="form-control">
+                            <option selected>1st Year</option>
+                            <option>2nd Year</option>
+                            <option>3rd Year</option>
+                            <option>B.tech</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6 is_selected">
+                        <label for="app_mess_option1">Is Applied For Coep mess?</label>
+                        <div class="col-sm-6" id="check">
+                            <div class="form-check">
+                                <input class="form-check-input app_mess_radio" type="radio" name="app_mess" id="app_mess_option1" value="option1">
+                                <label class="form-check-label" for="app_mess_option1">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input app_mess_radio" type="radio" name="app_mess" id="app_mess_option2" value="option2" checked>
+                                <label class="form-check-label" for="app_mess_option2">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6 mess_token">
+                        <label for="mess_app1">Mess Token Number</label>
+                        <input type="text" class="form-control" id="mess_app1"name = "mess_app1" placeholder="Enter Mess Token Number">
+                    </div>
+                </div>
+                
+
+                <button type="submit" class="btn btn-primary button1">Sign in</button>
+            </form>
+        </div>
+    </div>
+    </div>
+    <script src="{%static 'details_script.js'%}"></script>
+</body>
+
+</html>

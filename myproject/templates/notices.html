@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notices</title>
+    <style>
+           
+            
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('C://Users/dhoot/python/django/compile/akshita/home/static/img/notice.jpeg');
+            background-repeat: no-repeat; 
+            background: url('https://mygate.com/wp-content/uploads/2023/03/298.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+        }
+        .overlay {
+            background-color: rgba(255, 255, 255, 0.8); /* Add overlay to improve readability */
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #007bff;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        li {
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #007bff;
+        }
+        p {
+            font-size: 16px;
+            margin-top: 0;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            h2 {
+                font-size: 20px;
+            }
+            p {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"> <!-- Add overlay to improve readability -->
+        <div class="container">
+            <h1>Notices</h1>
+            <ul>
+                {% for notice in notices %}
+                    <li>
+                        <h2>{{ notice.title }} - {{ notice.created_at|date:"D, d M Y" }}</h2>
+                        <p>{{ notice.content }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

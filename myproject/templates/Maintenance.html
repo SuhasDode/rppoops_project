@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {%load static%}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="{% static 'style7.css'%}" rel="stylesheet">
+    <link href="{%static 'bootsrap/bootstrap-4.0.0-dist/css/bootstrap-grid.min.css'%}" rel="stylesheet">
+    <link href="{%static 'bootsrap/bootstrap-4.0.0-dist/css/bootstrap.min.css'%}" rel="stylesheet">
+    <link href="{%static 'bootsrap/bootstrap-4.0.0-dist/css/bootstrap-grid.min.css.map'%}" rel="stylesheet">
+    <link href="{%static 'bootsrap/bootstrap-4.0.0-dist/css/bootstrap.min.css.map'%}" rel="stylesheet">
+
+</head>
+
+<body>
+    <h1 class="head1">
+        Maintenance
+        <a href="/" class="anchor" >Home</a>
+    </h1>
+    <div class="container">
+        <div class="row row1">
+            <div class="col-md-12">
+                <form id="maintenance-request-form" class="form-container1">
+                    <h3>
+                        <span class="badge badge-success badge2"><b>Maintainence Request</b></span>
+                    </h3>
+                    <label for="subject">Subject:</label>
+                    <input type="text" id="subject" name="subject"><br>
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description"></textarea><br>
+                    <label for="priority">Priority:</label>
+                    <select id="priority" name="priority">
+                        <option value="1">Low</option>
+                        <option value="2">Medium</option>
+                        <option value="3">High</option>
+                    </select><br>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Example form for complaints -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <form id="complaint-form" class="form-container1">
+                    <h3>
+                        <span class="badge badge-success badge2"><b>Complaint-Form</b></span>
+                    </h3>
+                    <label for="complaint-subject">Subject:</label>
+                    <input type="text" id="complaint-subject" name="subject"><br>
+                    <label for="complaint-description">Description:</label>
+                    <textarea id="complaint-description" name="description"></textarea><br>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <form id="feedback-form" class="form-container1">
+                <h3>
+                    <span class="badge badge-success badge2"><b>Feedback-Form</b></span>
+                </h3>
+                    <label for="feedback-subject">Subject:</label>
+                    <input type="text" id="feedback-subject" name="subject"><br>
+                    <label for="feedback-description">Description:</label>
+                    <textarea id="feedback-description" name="description"></textarea><br>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Example JavaScript code to handle form submission -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // JavaScript code for handling form submissions goes here
+            // Ensure to access elements after the DOM is fully loaded
+
+            document.getElementById('maintenance-request-form').addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                // Gather form data
+                const formData = {
+                    subject: document.getElementById('subject').value,
+                    description: document.getElementById('description').value,
+                    priority: document.getElementById('priority').value
+                };
+
+                // Send POST request to backend API endpoint
+                fetch('/api/maintenance-requests/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            alert('Maintenance request submitted successfully!');
+                        } else {
+                            alert('Failed to submit maintenance request. Please try again.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('An error occurred while submitting the maintenance request.');
+                    });
+            });
+
+            // Similarly, add event listeners for feedback and complaint forms here
+        });
+    </script>
+
+
+    <!-- JavaScript code to handle feedback form submission -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Your JavaScript code goes here
+            // Ensure to access elements after the DOM is fully loaded
+            document.getElementById('feedback-form').addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                // Gather form data
+                const formData = {
+                    subject: document.getElementById('feedback-subject').value,
+                    description: document.getElementById('feedback-description').value
+                };
+
+                // Send POST request to backend API endpoint
+                fetch('/api/feedback/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            alert('Feedback submitted successfully!');
+                        } else {
+                            alert('Failed to submit feedback. Please try again.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('An error occurred while submitting the feedback.');
+                    });
+            });
+        });
+
+    </script>
+
+    <!-- JavaScript code to handle complaint form submission -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Your JavaScript code goes here
+            // Ensure to access elements after the DOM is fully loaded
+            document.getElementById('complaint-form').addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                // Gather form data
+                const formData = {
+                    subject: document.getElementById('complaint-subject').value,
+                    description: document.getElementById('complaint-description').value
+                };
+
+                // Send POST request to backend API endpoint
+                fetch('/api/complaints/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            alert('Complaint submitted successfully!');
+                        } else {
+                            alert('Failed to submit complaint. Please try again.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('An error occurred while submitting the complaint.');
+                    });
+            });
+        });
+
+
+    </script>
+
+</body>
+
+</html>

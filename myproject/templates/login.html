@@ -2,121 +2,56 @@
 <html lang="en">
 
 <head>
+    {%load static%}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            /* margin: 0; */
-            /* display: flex; */
-            /* align-items: center; */
-            justify-content: center;
-            /* height: 100vh; */
-        }
-
-        .login-container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            margin: auto;
-            margin-top: 5%;
-        }
-
-        .login-container h2 {
-            text-align: center;
-            color: #333;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            color: #555;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        .form-group button {
-            background-color: #007bff;
-            color: #fff;
-            padding: 10px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            width: 100%;
-        }
-
-        .form-group button:hover {
-            background-color: #0056b3;
-        }
-        div.navigation-buttons{
-            display: block;
-        }
-        button.pre-post{
-            height: 40px;
-            width: 40px;
-            border-radius: 20px;
-            border: 0.2px solid rgb(103, 100, 100);
-            margin: 0;
-            background-color: #f6eeee;
-            font-size: 12px;
-        }
-        button.pre-post:hover{
-            background-color: #ebdfdf;
-        }
-        button.next-post{
-            font-size: 30px;
-        }
-    </style>
+    <link rel="stylesheet" href="{%static 'bootsrap/bootstrap-4.0.0-dist/css/bootstrap-grid.min.css'%}">
+    <link rel="stylesheet" href="{%static 'bootsrap/bootstrap-4.0.0-dist/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{%static 'style_login.css'%}">
+    
 </head>
 
 <body>
-    <div class="navigation-buttons">
-        <button class="pre-post" class = "next-post" onclick="goToPreviousPage()"> &#8592;</button>
-        <button class="pre-post"  onclick="goToNextPage()">&#10132;</button>
+    <div class="home1">
+        <a href="/" id="Homenav">Home</a>
     </div>
-    <div id="current-path"></div>
-    <div class="login-container">
-        <h2>Login</h2>
-        <form action="login" method="POST">
-            {%csrf_token%}
-            <div class="form-group">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
+    <div class="container sign-in_container">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-sm-12 col-md-8">
+                <div class="card sign-in-card">
+                    <div class="card-block">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQoPSHYfoASMsbeyzBDI-qdwqVUMTW9K8T8eYuYxMQrXxtV3JRjquOeizm90gSHYHQiPk&usqp=CAU" class="img-fluid sign-in-image">
+                        {% for message in messages %}
+                            <p class = 'messagealert' style="text-align: center;">{{ message }}</p>
+                        {% endfor %}
+                        <form class="sign-in_form" action="login" method="POST">
+                          {%csrf_token%}
+                            <div class="form-group">
+                                <label for="username">Username:</label>
+                                <input type="text" id="username" name="username" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">e-mail:</label>
+                                    <input type="text" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password:</label>
+                                <input type="password" id="password" name="password" required>
+                            </div>
+                            <div class="form-group">
+                                <a href="register" type="text" >Doesn't have an account?Sign-Up</a>
+                            </div>
+                            <button type="submit" class="btn sign-in_button btn-lg">sign-in</button>
+                          </form>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <div class="form-group">
-                <button type="submit">Sign Up</button>
-            </div>
-        </form>
+            <div class="col"></div>
+        </div>
     </div>
-    <script>
-        function goToPreviousPage() {
-            window.history.back();
-        }
-        function goToNextPage() {
-            window.history.forward();
-        }
-        function getPageNumber(path) {
-            const match = path.match(/\/page(\d+)/);
-            return match ? parseInt(match[1]) : 1;
-        }
-    </script>
+    
 
 </body>
 

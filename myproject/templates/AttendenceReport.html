@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {%load static%}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="{%static 'style11.css'%}" rel="stylesheet">
+    <link href="{%static 'bootsrap/bootstrap-4.0.0-dist/css/bootstrap-grid.min.css'%}" rel="stylesheet">
+    <link href="{%static 'bootsrap/bootstrap-4.0.0-dist/css/bootstrap.min.css'%}" rel="stylesheet">
+</head>
+<body>
+    <div class="headBlock">
+        <h1 class="badge-pill head" style="display: block;">
+            Rector Admin
+            {%if not user.is_authenticated or user.username != 'Rector@2024'%}
+            <a href="/adminLogin" class="anchor">Login</a>
+            {%elif user.is_authenticated %}
+            <a href="/logout" class="anchor">Logout</a>
+            {%endif%}
+            <a href="/Rector" class="anchor">Home</a>
+        </h1>
+    </div>
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-danger" role="alert">
+        <strong>{{ message }}</strong>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    <div class="container mybox">
+        <h2 style="text-align: center;"><span class="badge badge-pill badge-warning badge1" >Get attendence Report Here:</span></h2>
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-md-6">
+                <form class= "myform2"id="checkin-form" method="POST" action="getAttendence_report">
+                    {% csrf_token %}
+                    <label for="student-date">Date:</label>
+                    <input type="date" id="date" name="date" placeholder="Enter date" required><br>
+                    <div class="mybtn">
+                        <button type="submit" class="btn btn-primary ">Submit</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+    
+    {% if TodaynightAttendence %}
+        <div class="container">
+            <div class="row">
+                <div class="col"></div>
+                <div class="col-md-8 reportcol">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">{{date}}</th>
+                                <th scope="col">Mis Number</th>
+                                <th scope="col">Attendence_mark</th>
+                                <th scope="col">Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for todaynightAttendence in TodaynightAttendence%}
+                        <tr>
+                            <th scope="row">{{forloop.counter}}</th>
+                            <td>{{todaynightAttendence.misno}}</td>
+                            {%if todaynightAttendence.is_marked%}
+                            <td>Present</td>
+                            <td>{{todaynightAttendence.time}}</td>
+                            {%else%}
+                            <td>Absent</td>
+                            {%endif%}
+                        </tr>
+                        {%endfor%}
+                        <tr>
+                            <th scope="row">Total Students Present: {{len_present}}</th>
+                        </tr>
+                        <tr>
+                            <td>Total Students Absent: {{len_absent}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col"></div>
+            </div>
+        </div>
+    {%elif date%}
+        <!-- <div class="alert alert-danger" role="alert" style="display: inline-block;">
+            <strong>No data Found</strong>
+        </div> -->
+        <!-- Code to execute if TodaynightAttendence is empty or evaluates to False -->
+    {% endif %}
+
+</body>
+</html>

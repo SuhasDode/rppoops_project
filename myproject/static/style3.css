@@ -1,77 +1,66 @@
-body {
-    font-family: Arial, sans-serif;
+body.sign-in_body{
+    background-color: antiquewhite;
+}
+
+.container.sign-in_container{
+    margin-top: 0;
+}
+
+.card.sign-in-card{
+    padding: 40px 0px 20px 20px;
     background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
+    box-shadow: 2px 2px 5px rgba(0,0,0, .5);
+    -webkit-box-shadow: 2px 2px 5px rgba(0,0,0, .5);
+    -moz-box-shadow: 2px 2px 5px rgba(0,0,0, .5);
 }
 
-.container {
-    width: 400px;
-    margin: 100px auto;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-    text-align: center;
-    color: #333;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-label {
+img.sign-in-image{
+    padding: 0 2rem 2rem;
+    margin: auto;
     display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
+    width: 40%;
 }
 
-input[type="text"],
-input[type="password"] {
+form.sign-in_form{
+    max-width: 300px;
+    margin: auto;
+}
+
+button.sign-in_button{
+    color: #ffffff;
+    background-color: #d64829;
     width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
+    margin-bottom: 1.2rem;
 }
 
-button {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #007bff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+.home1{
+    font-size: 1.5rem;
+    background-color: aliceblue;
+    margin: 12px;
 }
-
-button:hover {
-    background-color: #0056b3;
-}
-
-.message {
-    padding: 10px;
-    background-color: #f8d7da;
-    color: #721c24;
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
-button.pre-post{
+.home1 a{
     color: black;
-    height: 40px;
-    width: 40px;
-    border-radius: 20px;
-    border: 0.2px solid rgb(103, 100, 100);
-    margin: 0;
-    background-color: #f4eaea;
-    font-size: 12px;
 }
-button.pre-post:hover{
-    background-color: #ebdfdf;
-    /* align-items:start */
+.home1 a:hover{
+    background-color: #ffffff;
+    color: rgb(72, 187, 236);
+}
+div.form-group label{
+    display: block;
+    /* width: 100%; */
+}
+input{
+    width: 90%;
+    /* margin: auto; */
+}
+
+div.h2{
+    text-align: center;
+}
+
+.badge.badge-pill.badge-warning.badge1{
+    margin-left: 20px;
+}
+div.badge2{
+    text-align: center;
 }

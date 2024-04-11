@@ -1,0 +1,47 @@
+body.sign-in_body{
+    background-color: antiquewhite;
+}
+
+.container.sign-in_container{
+    margin-top: 8%;
+}
+
+.card.sign-in-card{
+    padding: 40px 0px 20px 20px;
+    background-color: #f4f4f4;
+    box-shadow: 2px 2px 5px rgba(0,0,0, .5);
+    -webkit-box-shadow: 2px 2px 5px rgba(0,0,0, .5);
+    -moz-box-shadow: 2px 2px 5px rgba(0,0,0, .5);
+}
+
+img.sign-in-image{
+    padding: 0 2rem 2rem;
+    margin: auto;
+    display: block;
+    width: 40%;
+}
+
+form.sign-in_form{
+    max-width: 300px;
+    margin: auto;
+}
+
+button.sign-in_button{
+    color: #ffffff;
+    background-color: #d64829;
+    width: 100%;
+    margin-bottom: 1.2rem;
+}
+
+.home1{
+    font-size: 1.5rem;
+    background-color: aliceblue;
+    margin: 12px;
+}
+.home1 a{
+    color: black;
+}
+.home1 a:hover{
+    background-color: #ffffff;
+    color: rgb(72, 187, 236);
+}

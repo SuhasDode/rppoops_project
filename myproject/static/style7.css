@@ -1,0 +1,88 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: block;
+    /*justify-content: center;
+    align-items: center;
+    height: 100vh; */
+    background-image: url("https://img.freepik.com/free-vector/bright-yellow-background-with-triangle-pattern_1017-33837.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.head1{
+    background-color: #0a0a0a;
+    display: block;
+    color: #f4f4f4;
+    /* width: 100%; */
+    font-size: 2rem;
+    padding: 6px;
+}
+.form-container1 {
+    text-align: center;
+    margin: auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 80%;
+    border: 2px solid rgb(150, 146, 146);
+    margin: 12px;
+    /* max-width: 400px; */
+    /* margin: 0 auto; */
+}
+.form-container1 form {
+    display: flex;
+    flex-direction: column;
+    /* float: left; */
+}
+.form-container1 label {
+    margin-bottom: 8px;
+    font-weight: bold;
+    /* float: left; */
+}
+.form-container1 input[type="text"],
+.form-container1 textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    resize: none;
+}
+.form-container1 select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 16px;
+}
+.form-container1 button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.form-container1 button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+a.anchor{
+    float: right;
+    color: #fff;
+    font-size: 25px;
+    margin-top: 6px;
+}
+a.anchor:hover{
+    color: #58c9e6;
+}
+
+h3.span.badge.badge-success.badge2{
+    display: block;
+    float: left;
+}
+h3{
+    display: block;
+    width: 100%;
+}

@@ -1,0 +1,185 @@
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin View - Laundry Bookings</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .mark-complete-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Admin View - Laundry Bookings</h1>
+    {% if not user.is_superuser %}
+    <p>You are not authorized to view this page.</p>
+    <a href="{% url 'login' %}">Login as Admin</a>
+    {% else %}
+    
+    <a href="{% url 'completed_laundry' %}">View Completed Laundry</a>
+    <table>
+        <tr>
+            <th>User</th>
+            <th>Full Name</th>
+            <th>Room Number</th>
+            <th>Phone Number</th>
+            <th>Kilograms</th>
+            <th>Service Type</th>
+            <th>Time Slot</th>
+            <th>Total Amount</th>
+            <th>Action</th>
+        </tr>
+        {% for booking in non_completed_bookings %}
+        <tr>
+            <td>{{ booking.user }}</td>
+            <td>{{ booking.full_name }}</td>
+            <td>{{ booking.room_number }}</td>
+            <td>{{ booking.phone_number }}</td>
+            <td>{{ booking.kgs_count }}</td>
+            <td>{{ booking.service_type }}</td>
+            <td>{{ booking.time_slot }}</td>
+            <td>{{ booking.total_amount }}</td>
+            <td>
+                <form method="post" action="{% url 'mark_as_completed' booking.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="mark-complete-btn">Mark as Completed</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+</body>
+</html> {% endcomment %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin View - Laundry Bookings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        p {
+            font-size: 16px;
+            color: #666;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .mark-complete-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .mark-complete-btn:hover {
+            background-color: #45a049;
+        }
+        a {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Admin View - Laundry Bookings</h1>
+        {% if not user.is_superuser %}
+        <p>You are not authorized to view this page.</p>
+        <a href="{% url 'login' %}">Login as Admin</a>
+        {% else %}
+        <a href="{% url 'completed_laundry' %}">View Completed Laundry</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <th>Full Name</th>
+                    <th>Room Number</th>
+                    <th>Phone Number</th>
+                    <th>Kilograms</th>
+                    <th>Service Type</th>
+                    <th>Time Slot</th>
+                    <th>Total Amount</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for booking in non_completed_bookings %}
+                <tr>
+                    <td>{{ booking.user }}</td>
+                    <td>{{ booking.full_name }}</td>
+                    <td>{{ booking.room_number }}</td>
+                    <td>{{ booking.phone_number }}</td>
+                    <td>{{ booking.kgs_count }}</td>
+                    <td>{{ booking.service_type }}</td>
+                    <td>{{ booking.time_slot }}</td>
+                    <td>{{ booking.total_amount }}</td>
+                    <td>
+                        <form method="post" action="{% url 'mark_as_completed' booking.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="mark-complete-btn">Mark as Completed</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+    </div>
+</body>
+</html>

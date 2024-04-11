@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.0">
+    <title>Leave for the Day</title>
+    <style>
+        /* body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            /* margin: 0; */
+            /* display: flex; */
+            /* align-items: center; */
+            /* justify-content: center;
+            /* height: 100vh; */
+            /* background-image: url("https://images.pexels.com/photos/1631677/pexels-photo-1631677.jpeg?auto=compress&cs=tinysrgb&w=600");
+            background-size: cover;
+            background-repeat: no-repeat; */
+       
+
+        .container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: grid;
+            gap: 10px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="date"],
+        input[type="time"],
+        input[type="text"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 99%;
+        }
+
+        button[type="submit"] {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .messagealert {
+            color: red;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        div a.home{
+            text-decoration: none;
+            color: black;
+            float:left;
+            border-radius: 7px;
+            border: 0.5px solid black;
+            margin: 10px;
+            padding: 10px;
+        }
+        div a.log{
+            float: right;
+            text-decoration: none;
+            color: black;
+            border-radius: 7px;
+            border: 0.5px solid black;
+            margin: 10px;
+            padding: 10px;
+        }
+        div a.log:hover{
+            background-color: black;
+            color: white;
+        }
+        div a.home:hover{
+            background-color: black;
+            color: white;
+        }
+        .messagealert{
+            color: rgb(181, 107, 67);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <a href = "/" class="home">Home</a>
+        <a href = "login" class = 'log'>Login</a>
+    </div>
+    <div class="container">
+        <h1>Leave for the Day</h1>
+        {% for message in messages %}
+            <p class="messagealert">{{ message }}</p>
+        {% endfor %}
+        <form action="leave_for_day" method="POST">
+            {% csrf_token %}
+            <div>
+                <label for="date">Date:</label>
+                <input type="date" name="date" id="date">
+            </div>
+            <div>
+                <label for="time">Leave for:</label>
+                <input type="text" name="time" id="time"placeholder="Morning/Night?">
+            </div>
+            <div>
+                <label for="room">Room:</label>
+                <input type="text" name="room" id="room" >
+            </div>
+            <div>
+                <button type="submit">Submit</button>
+            </div>       
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Notice</title>
+    <style>
+        body {
+            
+            background-image: url('https://m.media-amazon.com/images/I/81Wsge2wb8L._AC_UF894,1000_QL80_.jpg'); /* Replace with your background image URL */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-color: rgba(255, 255, 255, 0.1); /* 60% opaque white background */
+            color: #000; /* Black text color */
+            font-family: Arial, sans-serif; /* Font family */
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 500px;
+            margin: 50px auto; /* Center the form */
+            background-color: #fff; /* White background color */
+            padding: 20px;
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            text-align: left;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc; /* Gray border */
+            border-radius: 5px; /* Rounded corners */
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff; /* Blue button color */
+            color: #fff; /* White text color */
+            border: none;
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+        p {
+            text-align: center;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #007bff; /* Blue link color */
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+    </style>
+</head>
+<body>
+    {% if user.username != 'Rector@2024' %}
+    <p>You are not authorized to create a notice.</p>
+    <a href="{% url 'adminLogin' %}">Login as Admin</a>
+    {% else %}
+    <div class="container">
+        <h1>Create Notice</h1>
+        <form method="post">
+            {% csrf_token %}
+            <label for="title">Title:</label><br>
+            <input type="text" id="title" name="title" required><br>
+            <label for="content">Content:</label><br>
+            <textarea id="content" name="content" rows="4" required></textarea><br>
+            <button type="submit">Create Notice</button>
+        </form>
+    </div>
+    {% endif %}
+</body>
+</html>

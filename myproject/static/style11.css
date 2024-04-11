@@ -1,0 +1,33 @@
+body{
+    background-image: url("/static/img/office.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.headBlock{
+    background-color: #e2bd7e;
+    color: #111010;
+    padding-top: 12px;
+}
+a.anchor{
+    color:black;
+    float: right;
+    font-size: 1.5rem;
+    margin: 5px;
+  }
+.anchor:hover{
+    color:rgb(255, 255, 255);
+}
+
+div.container.mybox{
+    text-align: center;
+}
+div.container.mybox form{
+    background-color: aliceblue;
+    margin: 20px;
+    padding: 12px;
+}
+
+.reportcol{
+    background-color: aliceblue;
+}
